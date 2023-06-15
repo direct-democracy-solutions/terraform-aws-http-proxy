@@ -1,11 +1,6 @@
 variable "api_display_name" {
   type = string
-  description = "Display name for the API Gateway created by the module"
-}
-
-variable "api_stage_name" {
-  type = string
-  description = "Name for the API Gateway stage"
+  description = "Display name for the AWS resources"
 }
 
 variable "api_mapping_key" {
@@ -13,7 +8,7 @@ variable "api_mapping_key" {
   description = "Proxied requests must begin with this prefix"
 }
 
-variable "api_gateway_description" {
+variable "api_description" {
   type = string
   description = "Description for the API Gateway resource"
 }

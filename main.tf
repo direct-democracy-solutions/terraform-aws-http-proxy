@@ -8,14 +8,14 @@ locals {
 
 resource "aws_apigatewayv2_api" "proxy" {
   name                         = var.api_display_name
-  description                  = var.api_gateway_description
+  description                  = var.api_description
   protocol_type                = "HTTP"
   disable_execute_api_endpoint = true
 }
 
 resource "aws_apigatewayv2_stage" "proxy" {
   api_id        = aws_apigatewayv2_api.proxy.id
-  name          = var.api_stage_name
+  name          = "default"
   deployment_id = aws_apigatewayv2_deployment.proxy.id
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.proxy.arn

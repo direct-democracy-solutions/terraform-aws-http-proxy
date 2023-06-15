@@ -1,4 +1,3 @@
-
 resource "aws_route53_record" "proxy" {
   zone_id = var.hosted_zone_id
   name    = local.domain_name
