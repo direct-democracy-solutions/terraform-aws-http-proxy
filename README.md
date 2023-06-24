@@ -20,12 +20,5 @@ module {
 }
 ```
 
-Note: due to a [bug](https://github.com/hashicorp/terraform-provider-aws/issues/32025)
-in the AWS provider, the first attempt to create the proxy will most
-likely fail. It happens because the TLS certificate is
-eventually-consistent and the provider tries to create dependent
-resources before the certificate is ready. Re-applying after the initial
-failure should fix the problem.
-
 The module will create a proxy gateway at the requested location, with a
 valid TLS certificate. Logs are streamed to CloudWatch.

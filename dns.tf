@@ -14,7 +14,7 @@ resource "aws_apigatewayv2_domain_name" "proxy" {
   domain_name = aws_acm_certificate.proxy.domain_name
 
   domain_name_configuration {
-    certificate_arn = aws_acm_certificate.proxy.arn
+    certificate_arn = aws_acm_certificate_validation.proxy.certificate_arn
     endpoint_type   = "REGIONAL"
     security_policy = "TLS_1_2"
   }
