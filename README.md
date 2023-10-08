@@ -29,3 +29,10 @@ failure should fix the problem.
 
 The module will create a proxy gateway at the requested location, with a
 valid TLS certificate. Logs are streamed to CloudWatch.
+
+## Custom Integration
+
+To integrate with something other than an HTTP service, pass the variable
+`auto_create_route=false` and omit `target_url`. Then you can define your
+own `aws_apigatewayv2_route` and `aws_apigatewayv2_integration` objects.
+To attach them to the API Gateway, use the module's `api_id` output. 

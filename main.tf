@@ -64,12 +64,14 @@ resource "aws_apigatewayv2_deployment" "proxy" {
 }
 
 resource "aws_apigatewayv2_route" "proxy" {
+  count = var.auto_create_route ? 1 : 0
   api_id    = aws_apigatewayv2_api.proxy.id
   route_key = "$default"
-  target    = format("integrations/%s", aws_apigatewayv2_integration.proxy.id)
+  target    = format("integrations/%s", var.auto_create_route ? aws_apigatewayv2_integration.proxy[0].id : "")
 }
 
 resource "aws_apigatewayv2_integration" "proxy" {
+  count = var.auto_create_route ? 1 : 0
   api_id             = aws_apigatewayv2_api.proxy.id
   integration_type   = "HTTP_PROXY"
   integration_method = "ANY"
